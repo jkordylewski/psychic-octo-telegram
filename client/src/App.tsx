@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import "./App.css";
+import { Typography, List, ListItem, ListItemText } from "@mui/material";
+
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
@@ -16,14 +17,14 @@ function App() {
 
   return (
     <>
-      <div>
-        <h1>Reactivities</h1>
-        <ul>
-          {activities.map((activity: Activity) => (
-            <li key={activity.id}>{activity.title}</li>
-          ))}
-        </ul>
-      </div>
+      <Typography variant="h2">Reactivities</Typography>
+      <List>
+        {activities.map((activity: Activity) => (
+          <ListItem key={activity.id}>
+            <ListItemText>{activity.title}</ListItemText>
+          </ListItem>
+        ))}
+      </List>
     </>
   );
 }
