@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Typography, List, ListItem, ListItemText } from "@mui/material";
+import axios from "axios";
 
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
@@ -10,9 +11,9 @@ function App() {
   const [activities, setActivities] = useState<Activity[]>([]);
 
   useEffect(() => {
-    fetch("https://localhost:5001/api/activities")
-      .then((response) => response.json())
-      .then((data) => setActivities(data));
+    axios
+      .get<Activity[]>("https://localhost:5001/api/activities")
+      .then((response) => setActivities(response.data));
   }, []);
 
   return (
